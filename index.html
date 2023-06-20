@@ -10,11 +10,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link href="assets/mega_menu.css" rel="stylesheet" type="text/css" />
+		
 		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 		<link rel="manifest" href="site.webmanifest">
+		
+
 
 
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -151,24 +153,70 @@
 								</div>
 							</section>
 							
-							
-							<section id="three" class="wrapper style3">
+							<section id="event-schedule" class="wrapper style3">
 								<div class="inner">
-									
-									<div class="content">
-										<h2 class="major">Event Schedule</h2>
-										<div class="accordion">
-										  <div class="accordion-item">
-											<h3 class="accordion-heading">6 November</h3>
-											<div class="accordion-content">
-											  <!-- Event details such as date, time, location, description, etc. -->
+									<h2 class="major">Event Schedule</h2>
+									<div id="event-schedule">
+										<p>
+											<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#day1" aria-expanded="false" aria-controls="day1">
+											  6 Nov
+											</button>
+											<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#day2" aria-expanded="false" aria-controls="day2">
+												7 Nov
+											</button>
+											<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#day3" aria-expanded="false" aria-controls="day3">
+												8 Nov
+											</button>
+										  </p>
+										  <div class="collapse" id="day1">
+											<div class="card card-body">
+												<table class="table">
+													<thead>
+													  <tr>
+														<th>Time</th>
+														<th>Event</th>
+														<th>Description</th>
+													  </tr>
+													</thead>
+													<tbody>
+													  <tr>
+														<td>10:00 AM - 17:30 PM</td>
+														<td>Tech Show and Exhibits</td>
+														<td>Write a short paragraph about the various booths and exhibits.</td>
+													  </tr>
+													  <tr>
+														<td>13:30 PM - 15:00 PM</td>
+														<td>Keynote Address</td>
+														<td>Digital Transformation for the Army</td>
+													  </tr>
+													  <tr>
+														<td>15:15 PM - 16:00 PM</td>
+														<td>Ops Demo</td>
+														<td></td>
+													  </tr>
+													  <tr>
+														<td>16:00 PM - 17:30 PM</td>
+														<td>Focus Group</td>
+														<td>Signals 2040 and DIS Partnership</td>
+													  </tr>
+													</tbody>
+												  </table>
 											</div>
 										  </div>
-										  <!-- Add more accordion items for other events -->
-										</div>
+										  <div class="collapse" id="day2">
+											<div class="card card-body">
+											  Day 2 Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+											</div>
+										  </div>
+										  <div class="collapse" id="day3">
+											<div class="card card-body">
+											  Day 3 Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+											</div>
+										  </div>
 									</div>
 								</div>
 							</section>
+							  
 							
 							
 							<section id="three" class="wrapper alt style4">
@@ -225,16 +273,43 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/mega_menu.js"></script>
+		<!-- JavaScript -->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/main.js"></script>
-			<script src="assets/custom.js"></script>
-			<script src="js/jquery.min.js"></script>
+			<script>
+				// Add event listeners to collapse elements
+				const buttons = document.querySelectorAll('[data-bs-toggle="collapse"]');
+				buttons.forEach((button) => {
+				  button.addEventListener('click', () => {
+					// Get the collapse target of the clicked button
+					const targetId = button.getAttribute('data-bs-target');
+					const targetCollapse = document.querySelector(targetId);
+			
+					// Close all other collapse elements
+					const collapses = document.querySelectorAll('.collapse.show');
+					collapses.forEach((collapse) => {
+					  if (collapse !== targetCollapse) {
+						bootstrap.Collapse.getInstance(collapse).hide();
+					  }
+					});
+			
+					// Change button class for the clicked button
+					buttons.forEach((btn) => {
+					  if (btn === button) {
+						btn.classList.add('button', 'primary');
+					  } else {
+						btn.classList.remove('button', 'primary');
+					  }
+					});
+				  });
+				});
+			  </script>
+
 
 
 	</body>
